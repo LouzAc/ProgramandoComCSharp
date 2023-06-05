@@ -4,20 +4,27 @@
     {
         static void Main(string[] args)
         {
-            Console.Write("Informe a quantidade de dígitos da senha (entre 4 e 10): ");
-            var quantidadedeDigitos = Convert.ToInt32(Console.ReadLine());
+            //var quantidadeDigitos = 0;
 
-            if (quantidadedeDigitos < 4 || quantidadedeDigitos > 10 || quantidadedeDigitos % 2 != 0)
+            //Console.Write("Informe a quantidade de dígitos da senha (entre 4 e 10): ");
+
+            //while (quantidadeDigitos == 0)
+            //{
+            //    quantidadeDigitos = ObterQuantidadeDigitos();
+            //}
+
+            int quantidadeDigitos;
+
+            do
             {
-                Console.WriteLine($"O valor {quantidadedeDigitos} é inválido de acordo com as regras.");
-                Console.ReadKey();
-                return;
-            }
+                Console.Write("Informe a quantidade de dígitos da senha (entre 4 e 10): ");
+                quantidadeDigitos = ObterQuantidadeDigitos();
+            } while (quantidadeDigitos == 0);
 
             var senha = "";// string.Empty;
             var randomico = new Random();
 
-            for (int i = 1; i <= quantidadedeDigitos; i++)
+            for (int i = 1; i <= quantidadeDigitos; i++)
             {
                 //var algarismo = randomico.Next(0, 10);
                 //var algarismo = randomico.Next(1, 61);
@@ -28,6 +35,23 @@
             }
 
             Console.WriteLine($"Senha: {senha}");
+        }
+
+        private static int ObterQuantidadeDigitos()
+        {
+            //var quantidadeDigitos = 0;
+
+            int.TryParse(Console.ReadLine(), out int quantidadeDigitos);
+
+            //if (quantidadeDigitos < 4 || quantidadeDigitos > 10 || quantidadeDigitos % 2 != 0)
+            if (quantidadeDigitos is < 4 or > 10 || quantidadeDigitos % 2 != 0)
+            {
+                Console.WriteLine($"O valor {quantidadeDigitos} é inválido de acordo com as regras.");
+                quantidadeDigitos = 0;
+
+            }
+
+            return quantidadeDigitos;
         }
     }
 }
