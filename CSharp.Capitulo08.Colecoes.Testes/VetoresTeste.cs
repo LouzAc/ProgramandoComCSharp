@@ -60,6 +60,7 @@ namespace CSharp.Capitulo08.Colecoes.Testes
         }
 
         [TestMethod]
+
         public void TodasStringEhUmVetorTeste()
         {
             var nome = "Vitor";
