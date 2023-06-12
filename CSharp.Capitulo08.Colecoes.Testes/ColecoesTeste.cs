@@ -55,6 +55,21 @@ namespace CSharp.Capitulo08.Colecoes.Testes
           var feriados = new Dictionary<DateTime, string>();
 
             feriados.Add(new DateTime(2023, 6, 8), "Corpus Cristi");
+            feriados.Add(Convert.ToDateTime("25/12/2023"), "Natal");
+            feriados.Add(Convert.ToDateTime("01/01/2024"), "Ano Novo");
+            //feriados.Add(Convert.ToDateTime("01/01/2024), "Aniversário de São Paulo");
+
+            var natal = feriados[Convert.ToDateTime("25/12/2023")];
+
+            foreach(var feriado in feriados) 
+            {
+                Console.WriteLine($"{feriado.Key:d}: {feriado.Value}");
+                Console.WriteLine($"{feriado.Key.Date}: {feriado.Value}");
+                Console.WriteLine($"{feriado.Key.ToShortDateString()}: {feriado.Value}");
+            }
+
+            Console.WriteLine(feriados.ContainsKey(new DateTime(2023, 6, 8)));
+            Console.WriteLine(feriados.ContainsValue("Natal"));
         }
     }
 }
