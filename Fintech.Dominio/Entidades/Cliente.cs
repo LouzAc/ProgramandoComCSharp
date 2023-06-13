@@ -6,6 +6,6 @@
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public Sexo Sexo { get; set; }
-        public Endereco Endereco { get; set; }
+        public Endereco EnderecoResidencial { get; set; }
     }
 }

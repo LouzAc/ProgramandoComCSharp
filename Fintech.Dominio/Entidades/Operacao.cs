@@ -1,6 +1,8 @@
 ﻿namespace Fintech.Dominio.Entidades
 {
-    public class Operacao
+    public enum Operacao
     {
+        Deposito = 1,
+        Saque = 2
     }
 }
