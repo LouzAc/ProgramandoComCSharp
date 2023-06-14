@@ -21,6 +21,8 @@ namespace Fintech.Correntista.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Cliente> clientes = new ();
+
         public MainWindow() //Método construtor.
         {
             InitializeComponent();
@@ -61,7 +63,11 @@ namespace Fintech.Correntista.Wpf
 
             //Gravar(cliente);
 
-            clienteDataGrid.Items.Add(cliente);
+            //clienteDataGrid.Items.Add(cliente);
+
+            clientes.Add(cliente);
+
+            clienteDataGrid.ItemsSource = clientes;           
             clienteDataGrid.Items.Refresh();
 
             MessageBox.Show("Cliente cadastrado com sucesso.");
