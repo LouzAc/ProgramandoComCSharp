@@ -34,7 +34,8 @@ namespace Fintech.Correntista.Wpf
             sexoComboBox.Items.Add(Sexo.Feminino);
             sexoComboBox.Items.Add(Sexo.Masculino);
             sexoComboBox.Items.Add(Sexo.Outro);
-            //sexoComboBox.Items.Add();
+
+            clienteDataGrid.ItemsSource = clientes;
         }
 
         private void incluirClienteButton_Click(object sender, RoutedEventArgs e)
@@ -67,7 +68,6 @@ namespace Fintech.Correntista.Wpf
 
             clientes.Add(cliente);
 
-            clienteDataGrid.ItemsSource = clientes;           
             clienteDataGrid.Items.Refresh();
 
             MessageBox.Show("Cliente cadastrado com sucesso.");
