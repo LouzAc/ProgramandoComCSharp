@@ -14,6 +14,13 @@ namespace CSharp.Capitulo02.GeradorSenha
         {
             Valor = Gerar();
         }
+
+        public Senha(int tamanho)
+        {
+           Tamanho = tamanho;
+           Valor = Gerar();
+        }
+
         public int Tamanho { get; set; } = TamanhoMinimo;
         public string Valor { get; set; }
 
