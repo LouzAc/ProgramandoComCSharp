@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fintech.Dominio.Entidades
 {
-    public class ContaCorrente : Conta
+    public class Poupanca : Conta
     {
-        public bool EmissaoChequeHabilitada { get; set; }
+        public decimal TaxaRendimento { get; set; }
     }
 }
