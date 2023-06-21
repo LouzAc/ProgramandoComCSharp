@@ -16,6 +16,8 @@ namespace Fintech.Dominio.Entidades
         public decimal Limite { get; set; }
         public override void EfetuarOperacao(decimal valor, Operacao operacao)
         {
+            var sucesso = true;
+
             switch (operacao)
             {
                 case Operacao.Deposito:
@@ -26,8 +28,14 @@ namespace Fintech.Dominio.Entidades
                     {
                         Saldo -= valor;
                     }
+                    else
+                    {
+                        sucesso = false;
+                    }
                     break;
             }
+
+            if (sucesso) Movimentos.Add(new Movimento(operacao, valor, this));
         }
     }
 }
