@@ -2,6 +2,7 @@
 using Fintech.Repositorios.SistemaArquivos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -223,17 +224,33 @@ namespace Fintech.Correntista.Wpf
 
         private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
         {
-            var conta = (Conta)contaComboBox.SelectedItem;
-            var operacao = (Operacao)operacaoComboBox.SelectedItem;
-            var valor = Convert.ToDecimal(valorTextBox.Text);
+            try
+            {
+                var conta = (Conta)contaComboBox.SelectedItem;
+                var operacao = (Operacao)operacaoComboBox.SelectedItem;
+                var valor = Convert.ToDecimal(valorTextBox.Text);
 
-            var movimento = conta.EfetuarOperacao(valor, operacao);
+                var movimento = conta.EfetuarOperacao(valor, operacao);
 
-            //Inserir();
+                //Inserir();
 
-            movimentoRepositorio.Inserir(movimento);
+                movimentoRepositorio.Inserir(movimento);
 
-            AtualizarGridMovimentacao(conta);
+                AtualizarGridMovimentacao(conta);
+            }
+            catch (FileNotFoundException excecao) 
+            {
+                MessageBox.Show($"O arquivo {excecao.FileName} não foi encontrado.");
+            }
+            catch (DirectoryNotFoundException) 
+            {
+                MessageBox.Show($"O diretório {Properties.Settings.Default.CaminhoArquivoMovimento} não foi encontrado.");
+            }
+            catch (Exception excecao)
+            {
+                MessageBox.Show("Eita! Algo deu errado e em breve teremos uma solução.");
+                //Logar(excecao);// log4net
+            }
         }
 
         private void AtualizarGridMovimentacao(Conta conta)
