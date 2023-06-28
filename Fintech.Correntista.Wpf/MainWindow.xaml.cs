@@ -203,7 +203,6 @@ namespace Fintech.Correntista.Wpf
             LimparControlesOperacao();
             operacaoTabItem.Focus();
         }
-
         private void LimparControlesOperacao()
         {
             contaComboBox.SelectedIndex = -1;
@@ -217,9 +216,13 @@ namespace Fintech.Correntista.Wpf
         {
             if (tipoContaComboBox.SelectedItem == null) return;
 
+            mainSpinner.Visibility = Visibility.Visible;
+
             var conta = (Conta)contaComboBox.SelectedItem;
 
             AtualizarGridMovimentacao(conta);
+
+            mainSpinner.Visibility = Visibility.Hidden;
         }
 
         private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
@@ -246,10 +249,18 @@ namespace Fintech.Correntista.Wpf
             {
                 MessageBox.Show($"O diretório {Properties.Settings.Default.CaminhoArquivoMovimento} não foi encontrado.");
             }
+            catch (SaldoInsuficienteException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception excecao)
             {
                 MessageBox.Show("Eita! Algo deu errado e em breve teremos uma solução.");
                 //Logar(excecao);// log4net
+            }
+            finally 
+            {
+                //É chamado sempre mesmo que haja algum return no código.
             }
         }
 
