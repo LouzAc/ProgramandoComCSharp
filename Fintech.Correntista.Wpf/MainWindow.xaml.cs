@@ -212,20 +212,20 @@ namespace Fintech.Correntista.Wpf
             saldoTextBox.Clear();
         }
 
-        private void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (tipoContaComboBox.SelectedItem == null) return;
+            if (contaComboBox.SelectedItem == null) return;
 
             mainSpinner.Visibility = Visibility.Visible;
 
             var conta = (Conta)contaComboBox.SelectedItem;
 
-            AtualizarGridMovimentacao(conta);
+            await AtualizarGridMovimentacao(conta);
 
             mainSpinner.Visibility = Visibility.Hidden;
         }
 
-        private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
+        private async void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -239,7 +239,7 @@ namespace Fintech.Correntista.Wpf
 
                 movimentoRepositorio.Inserir(movimento);
 
-                AtualizarGridMovimentacao(conta);
+                await AtualizarGridMovimentacao(conta);
             }
             catch (FileNotFoundException excecao) 
             {
@@ -264,9 +264,9 @@ namespace Fintech.Correntista.Wpf
             }
         }
 
-        private void AtualizarGridMovimentacao(Conta conta)
+        private async Task AtualizarGridMovimentacao(Conta conta)
         {
-            conta.Movimentos = movimentoRepositorio.Selecionar(conta.Agencia.Numero, conta.Numero);
+            conta.Movimentos = await movimentoRepositorio.SelecionarAsync(conta.Agencia.Numero, conta.Numero);
 
             movimentacaoDataGrid.ItemsSource = conta.Movimentos;
             movimentacaoDataGrid.Items.Refresh();
