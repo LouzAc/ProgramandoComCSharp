@@ -1,8 +1,9 @@
 ﻿using Fintech.Dominio.Entidades;
+using Fintech.Dominio.Interfaces;
 
 namespace Fintech.Repositorios.SistemaArquivos
 {
-    public class MovimentoRepositorio
+    public class MovimentoRepositorio : IMovimentoRepositorio
     {
         private const string DiretorioBase = "Dados";
 
