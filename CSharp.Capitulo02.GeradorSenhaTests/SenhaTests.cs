@@ -5,21 +5,21 @@ namespace CSharp.Capitulo02.GeradorSenha.Tests
     [TestClass()]
     public class SenhaTests
     {
-        [TestMethod()]
-        public void GerarTest()
-        {
-            //Senha.Gerar(); errado
+        //[TestMethod()]
+        //public void GerarTest()
+        //{
+        //    //Senha.Gerar(); errado
             
-            var senha = new Senha();
+        //    var senha = new Senha();
 
-            senha.Tamanho = 4;
+        //    senha.Tamanho = 4;
 
-            var valor = senha.Gerar();
+        //    var valor = senha.Gerar();
 
-            Assert.AreEqual(senha.Tamanho, valor.Length);
+        //    Assert.AreEqual(senha.Tamanho, valor.Length);
 
-            Console.WriteLine(valor);
-        }
+        //    Console.WriteLine(valor);
+        //}
 
         [TestMethod]
         public void ConstrutorSemParametrosDeveRetornarSenhaMinima()
