@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SqlSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Repositorios.SqlServerTests", "Fintech.Repositorios.SqlServerTests\Fintech.Repositorios.SqlServerTests.csproj", "{B0C4BE4C-3A2A-4EFE-B56C-83A8D00161A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Capitulo10.DelegateLambda.Testes", "CSharp.Capitulo10.DelegateLambda.Testes\CSharp.Capitulo10.DelegateLambda.Testes.csproj", "{C513F3FB-448A-4BEB-9497-7A689F269573}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{B0C4BE4C-3A2A-4EFE-B56C-83A8D00161A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0C4BE4C-3A2A-4EFE-B56C-83A8D00161A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0C4BE4C-3A2A-4EFE-B56C-83A8D00161A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C513F3FB-448A-4BEB-9497-7A689F269573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C513F3FB-448A-4BEB-9497-7A689F269573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C513F3FB-448A-4BEB-9497-7A689F269573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C513F3FB-448A-4BEB-9497-7A689F269573}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
