@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Fintech.Repositorios.SistemaArquivos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Fintech.Dominio.Entidades;
 
 namespace Fintech.Repositorios.SistemaArquivos.Tests
@@ -35,6 +29,25 @@ namespace Fintech.Repositorios.SistemaArquivos.Tests
             {
                 Console.WriteLine($"{movimento.Data} - {movimento.Operacao} - {movimento.Valor}");
             }
+        }
+
+        [TestMethod()]
+        public void DelegateActionTeste() 
+        {
+            var movimentos = movimentoRepositorio.Selecionar(1, 1);
+
+            movimentos.ForEach(EscreverMovimento);
+
+            Action<Movimento> writeLine = m => Console.WriteLine($"{m.Data} - {m.Operacao} - {m.Valor}");
+            
+            movimentos.ForEach(writeLine);
+
+            movimentos.ForEach(m => Console.WriteLine($"{m.Data} - {m.Operacao} - {m.Valor}"));
+        }
+
+        private void EscreverMovimento(Movimento movimento)
+        {
+            Console.WriteLine($"{movimento.Data} - {movimento.Operacao} - {movimento.Valor}");
         }
     }
 }
